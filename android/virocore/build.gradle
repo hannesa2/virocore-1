@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply from: 'preprocessor.gradle'
+apply plugin: 'maven-publish'
 
 android {
     flavorDimensions  "product"
