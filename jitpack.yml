@@ -1,0 +1,8 @@
+jdk:
+  - openjdk11
+install:
+  - cd android
+  - ./gradlew :virocore:assembleRelease :virocore:publishToMavenLocal -x :virocore:test
+  - ./gradlew :app:assembleRelease :app:publishToMavenLocal -x :app:test
+  - ./gradlew :viroar:assembleRelease :viroar:publishToMavenLocal -x :viroar:test
+  - find . -name "*.aar"
