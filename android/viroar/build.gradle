@@ -64,3 +64,11 @@ tasks.whenTaskAdded { task ->
         task.finalizedBy 'extractNativeLibraries'
     }
 }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.all {}
+        }
+    }
+}

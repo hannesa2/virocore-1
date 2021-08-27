@@ -10,6 +10,8 @@ buildscript {
 }
 
 allprojects {
+    group = 'com.viroCommunity'
+    version = getTagVersion()
     repositories {
         jcenter()
         google()
@@ -18,4 +20,9 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+static def getTagVersion() {
+    def process = "git describe --tags".execute()
+    return process.text.toString().trim()
 }

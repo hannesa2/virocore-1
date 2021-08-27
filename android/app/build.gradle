@@ -46,3 +46,11 @@ dependencies {
     implementation project(':libs:arcore')
     implementation 'com.google.protobuf.nano:protobuf-javanano:3.0.0-alpha-7'
 }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.all {}
+        }
+    }
+}
