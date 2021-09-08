@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0 # 0 indicates all history for all branches and tags
     - name: set up JDK
       uses: actions/setup-java@v2
       with:
@@ -18,18 +20,17 @@ jobs:
         java-version: 11
 
     - name: assemble ViroCore
-      run: |
-        ./gradlew assembleRelease
+      run: ./gradlew assembleRelease
       working-directory: ./android
     - name: Upload result ViroCore
-      uses: actions/upload-artifact@v2.2.3
-      with: 
+      uses: actions/upload-artifact@v2.2.4
+      with:
         name: viroCore
-        path: |
-          ./android/virocore/build/outputs/aar/*-release*.aar
-          ./android/viroreact/build/outputs/aar/*-release*.aar
-          ./android/viroar/build/outputs/aar/*-release*.aar
-          ./android/app/build/outputs/aar/*-release*.aar
+        path: ./android/**/build/outputs/aar/*-release*.aar
+
+    - name: publish test
+      run: ./gradlew :virocore:publishToMavenLocal :viroreact:publishToMavenLocal :viroar:publishToMavenLocal :app:publishToMavenLocal
+      working-directory: ./android
 
   AndroidCheck:
     name: Check
