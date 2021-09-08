@@ -20,7 +20,7 @@ jobs:
       run: ./gradlew :virocore:assembleRelease
       working-directory: ./android
     - name: Upload result ViroCore
-      uses: actions/upload-artifact@v2.2.3
+      uses: actions/upload-artifact@v2.2.4
       with: 
         name: virocore.aar
         path: ./android/virocore/build/outputs/aar/*-release*.aar
@@ -37,7 +37,7 @@ jobs:
       run: bash ./gradlew :viroreact:assembleRelease
       working-directory: ./android
     - name: Upload result ViroReact
-      uses: actions/upload-artifact@v2.2.3
+      uses: actions/upload-artifact@v2.2.4
       with: 
         name: viroreact.aar
         path: ./android/viroreact/build/outputs/aar/*-release.aar
@@ -92,7 +92,7 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET=9.0
             
       - name: Upload iOS Renderer artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2.2.4
         with: 
           name: ios_dist.tgz
           path: ../viro/ios/dist/
