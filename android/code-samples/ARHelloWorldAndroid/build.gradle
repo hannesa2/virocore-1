@@ -39,12 +39,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     testImplementation 'junit:junit:4.13.2'
-    api project(':code-samples:gvr_common')
-    api project(':code-samples:arcore_client')
-    aarImplementation('com.github.ViroCommunity.virocore:virocore:rc-1.20.2') {
-        transitive = false
-    }
-    codeImplementation (project(path: ':virocore')) {
+    implementation project(':code-samples:gvr_common')
+    implementation 'com.google.ar:core:1.27.0'
+    implementation('com.github.hannesa2.virocoreCommunity:virocore:rc-1.20.2') {
         transitive = false
     }
     implementation 'com.google.protobuf.nano:protobuf-javanano:3.2.0rc2'
