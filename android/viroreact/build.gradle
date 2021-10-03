@@ -36,7 +36,7 @@ android {
             assets.srcDirs = ['../sharedCode/src/main/assets']
 
             // Package both the /sharedCode jniLibs viroar's build/natives libs into the AAR
-            jniLibs.srcDirs = ['../sharedCode/src/main/jniLibs', '../viroar/build/natives/jni']
+            //jniLibs.srcDirs = ['../sharedCode/src/main/jniLibs', '../viroar/build/natives/jni']
             manifest.srcFile '../sharedCode/src/main/AndroidManifest.xml'
         }
     }
