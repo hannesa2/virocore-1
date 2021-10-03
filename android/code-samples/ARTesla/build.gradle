@@ -35,7 +35,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     testImplementation 'junit:junit:4.13.2'
     api project(':code-samples:gvr_common')
-    implementation 'com.google.ar:core:1.27.0'
 
     aarImplementation('com.github.ViroCommunity.virocore:virocore:rc-1.20.2') {
         transitive = false
