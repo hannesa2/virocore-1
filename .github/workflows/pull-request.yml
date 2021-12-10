@@ -59,12 +59,16 @@ jobs:
 
   iosBuild:
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        xcode: [ Xcode_12.2, Xcode_12.3, Xcode_12.4 ]
     steps:
       - uses: actions/checkout@v2.4.0
       - name: Install gpg
         run: brew install gnupg
-      - name: Set XCode Version 11.2
-        run: sudo xcode-select -s /Applications/Xcode_11.2.app
+      - name: Set XCode Version
+        run: sudo xcode-select -s /Applications/${{ matrix.xcode }}.app
       - name: Install pod dependencies
         run: |
           cd ios
