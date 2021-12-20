@@ -83,7 +83,7 @@ jobs:
           cd ios && xcodebuild \
             -workspace ViroRenderer.xcworkspace \
             -scheme ViroKit \
-            -sdk iphoneos13.2 \
+            -sdk iphoneos14.4 \
             -configuration Release \
             IPHONEOS_DEPLOYMENT_TARGET=9.0
 
