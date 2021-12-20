@@ -76,6 +76,8 @@ jobs:
           cd ios
           pod install --verbose
         shell: bash
+      - name: Investigate
+        run: cd ios && xcodebuild -showsdks
       - name: Xcodebuild iOS Renderer (non-static)
         run: |
           cd ios && xcodebuild \
