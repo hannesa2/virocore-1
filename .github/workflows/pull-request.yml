@@ -7,55 +7,55 @@ on:
   pull_request:
 
 jobs:
-  androidBuild:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.0
-      - name: set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: 11
-
-      - name: assemble ViroCore
-        run: |
-          ./gradlew assembleDebug
-        working-directory: ./android
-      - name: Upload result ViroCore
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: viroCore
-          path: |
-            ./android/virocore/build/outputs/aar/*.aar
-            ./android/viroreact/build/outputs/aar/*.aar
-            ./android/viroar/build/outputs/aar/*.aar
-
-  AndroidCheck:
-    name: Check
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: android
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.4.0
-        with:
-          fetch-depth: 0
-      - name: Install JDK 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: "adopt"
-          java-version: 11
-      - name: Code checks
-        run: ./gradlew check
-      - name: Archive Lint report
-        uses: actions/upload-artifact@v2.2.4
-        if: ${{ always() }}
-        with:
-          name: Viro-Lint-report
-          path: |
-            ./**/build/reports/lint-results.html
-            ./**/**/build/reports/lint-results.html
+#  androidBuild:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2.4.0
+#      - name: set up JDK
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: 'adopt'
+#          java-version: 11
+#
+#      - name: assemble ViroCore
+#        run: |
+#          ./gradlew assembleDebug
+#        working-directory: ./android
+#      - name: Upload result ViroCore
+#        uses: actions/upload-artifact@v2.2.4
+#        with:
+#          name: viroCore
+#          path: |
+#            ./android/virocore/build/outputs/aar/*.aar
+#            ./android/viroreact/build/outputs/aar/*.aar
+#            ./android/viroar/build/outputs/aar/*.aar
+#
+#  AndroidCheck:
+#    name: Check
+#    runs-on: ubuntu-latest
+#    defaults:
+#      run:
+#        working-directory: android
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2.4.0
+#        with:
+#          fetch-depth: 0
+#      - name: Install JDK 11
+#        uses: actions/setup-java@v2
+#        with:
+#          distribution: "adopt"
+#          java-version: 11
+#      - name: Code checks
+#        run: ./gradlew check
+#      - name: Archive Lint report
+#        uses: actions/upload-artifact@v2.2.4
+#        if: ${{ always() }}
+#        with:
+#          name: Viro-Lint-report
+#          path: |
+#            ./**/build/reports/lint-results.html
+#            ./**/**/build/reports/lint-results.html
 
   iosBuild:
     runs-on: ${{ matrix.macOS }}
